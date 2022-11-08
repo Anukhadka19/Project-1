@@ -1,0 +1,23 @@
+main {
+    height: 1000px;
+}
+
+header {
+    height: 80px;
+    text-align: center;
+    font-size: 36px;
+}
+
+#menuContainer > div {
+    border: 2px solid black;
+}
+
+#order li {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.card {
+    border: 1px solid blue;
+}

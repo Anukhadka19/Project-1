@@ -5,12 +5,14 @@ main {
 header {
     height: 80px;
     text-align: center;
-    font-size: 36px;
+    font-size: 40px;
 }
 
 #menuContainer > div {
-    border: 2px solid black;
+    border: 1px solid black;
+    font-size: 36px;
 }
+
 
 #order li {
     border: 1px solid black;
@@ -19,5 +21,19 @@ header {
 }
 
 .card {
-    border: 1px solid blue;
+    border: 1px solid rgb(7, 7, 23);
+    float: right;
+    padding: 0 8px;
+    width: 33%;
+    text-align: center;
+    /* box-sizing: border-box; */
+    margin-bottom: 30px;
+   
 }
+
+.responsive {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+}
+

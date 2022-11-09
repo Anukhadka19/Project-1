@@ -10,7 +10,9 @@ header {
 
 #menuContainer > div {
     border: 1px solid black;
+    font-size: 36px;
 }
+
 
 #order li {
     border: 1px solid black;
@@ -33,5 +35,5 @@ header {
     width: 50%;
     max-width: 400px;
     height: auto;
-   }
+}
 

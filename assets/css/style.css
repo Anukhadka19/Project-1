@@ -22,6 +22,7 @@ header {
   top: 0;
 }
 
+
 #order li {
     border: 1px solid black;
     padding: 5px;
@@ -48,7 +49,7 @@ header {
     width: 65%;
     max-width: 400px;
     height: auto;
-   }
+}
 
    .addButton {
     border: 1px solid rgb(8, 97, 145);

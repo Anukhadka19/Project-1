@@ -1,15 +1,25 @@
-main {
-    height: 1000px;
+
+.menuHead {
+    color: cornflowerblue
 }
 
 header {
     height: 80px;
     text-align: center;
     font-size: 40px;
+    color: cornflowerblue;
 }
 
 #menuContainer > div {
     border: 1px solid black;
+    font-size: 36px;
+}
+
+#stickyContainer{
+
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 
 #order li {
@@ -18,20 +28,43 @@ header {
     margin: 5px 0;
 }
 
+#order span {
+    float: right;
+}
+
 .card {
     border: 1px solid rgb(7, 7, 23);
     float: right;
     padding: 0 8px;
     width: 33%;
     text-align: center;
-    /* box-sizing: border-box; */
+    box-sizing: border-box; 
     margin-bottom: 30px;
+    min-width: 200px;
    
 }
 
 .responsive {
-    width: 50%;
+    width: 65%;
     max-width: 400px;
     height: auto;
    }
 
+   .addButton {
+    border: 1px solid rgb(8, 97, 145);
+    background-color: rgb(110, 209, 231);
+    width: 100%;
+   }
+
+   .addButton:hover {
+    background-color: rgb(7, 76, 179);
+    font-weight: 600;
+    cursor: pointer;
+   }
+
+   #orderContainer {
+    font-size: 20px;
+    border:  1px solid black;
+    padding: 0%;
+
+   }

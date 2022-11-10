@@ -95,7 +95,7 @@
                 console.log(data.drinks);
                 if (data) {
                     const drinkArray = []
-                    let results = data.drinks;
+                    let results = randomSixArray(data.drinks);
                     for (let i = 0; i < 6; i++) {
                         // const drinkObject = {
                         //     name: `${results[i].strDrink}`,
@@ -136,10 +136,11 @@
             .then(function (data) {
                 if (data) {
                     const mealArray = []
+                    let results = randomSixArray(data.meals);
                     for (let i = 0; i < 6; i++) {
                         const mealObject = {
-                            name: `${data.meals[i].strMeal}`,
-                            imgUrl: `${data.meals[i].strMealThumb}`
+                            name: `${results[i].strMeal}`,
+                            imgUrl: `${results[i].strMealThumb}`
                         }
                         mealArray.push(mealObject);
                     }
@@ -151,4 +152,22 @@
                 console.log(error.message);
             });
     }
+
+
+    // Will return a dollar amount within the two numbers given (inclusive)
+    function createRandomPrice(minNum, maxNum) {
+        return `Price: $${Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum}`;
+    }
+
+    // Takes in an array and builds an new array with six of the original arrays elements, chosen at random, but without repeating any
+    function randomSixArray(itemArray) {
+        const sixArray = [];
+        for (let i = 0; i < 6; i++) {
+            const randomIndex = Math.floor(Math.random() * itemArray.length);
+            sixArray.push(itemArray[randomIndex]);
+            itemArray.splice(randomIndex, 1);
+        }
+        return sixArray;
+    }
+
 })(jQuery);

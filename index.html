@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,47 +9,45 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    
 </head>
 
 <body>
     <header>
         <h1>Welcome to the Boozy Chef</h1>
     </header>
-
-    <main class="columns">
-        <section id="menuContainer" class="column is-four-fifths has-background-warning">
+    <main class="columns m-1">
+        <section id="menuContainer" class="column is-four-fifths">
+            
             <div class="menuHead">
-                <h2>Drinks</h2>
+                <h2 class="menu-titles">Drinks</h2>
+                <div id="drinkMenu" class="">
+                    <!-- elements will be created in JS -->
+                </div>
             </div>
-            <!-- 'select' list will go here -->
-            <div id="drinkMenu" class="">
- 
-                <!-- elements will be created in JS -->
 
-            </div>
             <div class="menuHead">
-                <h2>Meals</h2>
-            </div>
-            <!-- 'select' list will go here -->
-            <div id="foodMenu" class="">
-                <!-- elements will be created in JS -->
+                <h2 class="menu-titles">Meals</h2>
+                <div id="foodMenu" class="">
+                    <!-- elements will be created in JS -->
+                </div>
             </div>
         </section>
-        <section id="orderContainer" class="column is-one-fifth has-background-danger">
-            <h3>Your Order:</h3>
-            <!-- will be a ul that gets added one by one as items are ordered -->
-            <ul id="order">
-                <!-- will generate 'li's as items are added to order -->
-            </ul>
+        <section id="orderContainer" class="has-background-primary column is-one-fifth">
+            <div id="stickyContainer">
+                <h3>Your Order:</h3>
+                <ul id="order">
+                    <!-- add li's dynamically -->
+                </ul>
+                <button id="clearBtn" hidden>Cancel Order</button>
+            </div>
         </section>
     </main>
     <footer>
         NTT Inc. &#169;(fake)
     </footer>
 
-    <!-- add jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

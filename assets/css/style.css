@@ -1,16 +1,42 @@
-main {
-    height: 1000px;
+body {
+    background-color:rgb(243, 178, 27);
+    text-align: center;
+}
+
+.menuHead {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: cornflowerblue;
+    padding-bottom: 0em;
+    background-color: rgb(96, 230, 226);
+}
+.menuHead > h1 {
+    display: block;
+    width: 100%;
+}
+.menu-titles {
+    font-size: 3em;
+    font-weight: bold;
 }
 
 header {
     height: 80px;
     text-align: center;
-    font-size: 40px;
+    font-size: 60px;
+    color: cornflowerblue;
 }
 
 #menuContainer > div {
-    border: 1px solid black;
-    font-size: 36px;
+    border: 2px solid black;
+    /* font-size: 36px; */
+}
+
+
+#stickyContainer{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
 }
 
 
@@ -20,20 +46,48 @@ header {
     margin: 5px 0;
 }
 
+#order span {
+    float: right;
+}
+
 .card {
     border: 1px solid rgb(7, 7, 23);
-    float: right;
-    padding: 0 8px;
-    width: 33%;
+    padding: 0.5em;
+    width: 30%;
     text-align: center;
-    /* box-sizing: border-box; */
-    margin-bottom: 30px;
-   
+    box-sizing: border-box; 
+    margin: 1em 0.2em;
+    min-width: 300px;   
+}
+.card-special {
+    display: flex;
+    flex-direction: column;
+    align-content:  flex-end
+    /* background-color: black !important; */
+    /* height: fit-content */
 }
 
 .responsive {
-    width: 50%;
+    width: 65%;
     max-width: 400px;
     height: auto;
 }
 
+   .addButton {
+    border: 1px solid rgb(8, 97, 145);
+    background-color: rgb(110, 209, 231);
+    width: 100%;
+   }
+
+   .addButton:hover {
+    background-color: rgb(7, 76, 179);
+    font-weight: 600;
+    cursor: pointer;
+   }
+
+   #orderContainer {
+    font-size: 20px;
+    border:  1px solid black;
+    padding: 0%;
+
+   }

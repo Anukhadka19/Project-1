@@ -217,7 +217,13 @@ orderPrice.append(amount);
 item.append(orderName, orderPrice, button);
 $("#order").append(item);
 
+// Build objects and add to storage
 
+$("#BorderContainer").on("click", "#clearBtn", function(event)) {
+    const clearButton = event.target;
+    $("#order") = 
+
+}
 })
 
 }) (jQuery);

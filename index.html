@@ -20,17 +20,32 @@
             
             <div class="menuHead">
                 <h2 class="menu-titles">Drinks</h2>
-                <div id="drinkMenu" class="">
-                    <!-- elements will be created in JS -->
+                <div class="select is-multiple">
+                    <select multiple size="4">
+                      <option value="gin">Gin</option>
+                      <option value="tequila">Tequila</option>
+                      <option value="vodka">Vodka</option>
+                      <option value="rum">Rum</option>
+                    </select>
                 </div>
             </div>
-
+            <div id="drinkMenu" class="subMenu">
+                    <!-- elements will be created in JS -->
+            </div>
+            
             <div class="menuHead">
                 <h2 class="menu-titles">Meals</h2>
-                <div id="foodMenu" class="">
-                    <!-- elements will be created in JS -->
-                </div>
+                <select multiple size="4">
+                    <option value="dessert">Dessert</option>
+                    <option value="seafood">Seafood</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="breakfast">Breakfast</option>
+                  </select>
             </div>
+            <div id="foodMenu" class="subMenu">
+                    <!-- elements will be created in JS -->
+            </div>
+            
         </section>
         <section id="orderContainer" class="has-background-primary column is-one-fifth">
             <div id="stickyContainer">

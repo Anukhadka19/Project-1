@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Thanks for Ordering!</title>
-        <link rel="stylesheet" href="../../assets/css/reset.css">
-        <link rel="stylesheet" href="../../assets/css/style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    </head>
 
-    <body>
-        <!-- probly needs a header -- can be the same as index.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Boozy Chef</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
 
-        <main>
-            <h1>thanks for ordering! (summarize order)</h1>
-        </main>
+<body>
 
-        <!-- probly needs a footer -- can be the same as index.html -->
-    </body>
-</html>
+    <header>
+        Welcome to the Boozy Chef
+    </header>
+    <main>
+        
+        <div id= "orderConfirmation"class="card mx-auto">
+
+            <div class="card-content card-special pt-0 mt-0">
+                <p class="title is-4">
+                   Thanks for ordering!
+                </p>
+                  <ul id="finishedOrderlist">
+                  <li class="title is-6 my-3">Salmon: $45</li>
+                  <li class="title is-6 my-3">Salmon: $45</li>
+                  <li class="title is-6 my-3">Salmon: $45</li>
+                  
+                </ul>  
+                <p class="title is-6 mt-3">Total: $75</p>
+                <button class="subtitle addButton is-6 has-text-white p-1 mt-4">Confirm</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        NTT Inc. &#169;(fake)
+    
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html

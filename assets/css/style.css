@@ -1,9 +1,10 @@
 body {
-    background-color:rgb(243, 178, 27);
+    background-color:rgb(110, 239, 78);
     text-align: center;
+    height:100vh
 }
 
-.menuHead {
+.subMenu {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -11,10 +12,7 @@ body {
     padding-bottom: 0em;
     background-color: rgb(96, 230, 226);
 }
-.menuHead > h1 {
-    display: block;
-    width: 100%;
-}
+
 .menu-titles {
     font-size: 3em;
     font-weight: bold;
@@ -24,7 +22,7 @@ header {
     height: 80px;
     text-align: center;
     font-size: 60px;
-    color: cornflowerblue;
+    color: rgb(42, 109, 233);
 }
 
 #menuContainer > div {
@@ -91,3 +89,17 @@ header {
     padding: 0%;
 
    }
+
+   footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(94, 148, 220);
+        color: white;
+        text-align: center;
+     }
+
+     #finishedOrderlist {
+        border-bottom: 1px solid black;
+     }

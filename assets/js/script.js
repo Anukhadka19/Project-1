@@ -191,18 +191,31 @@ $("main").on("click", ".addButton", function(event){
     const priceArray = price.split(" ")
     const priceOnly = priceArray[1];
 
-    <li class="orderItem">
-    <p class="orderName">
+/* <li class= "orderItem">
+    <p class= "orderName">
     <p>meal name</p> 
     </p>
-    <p class="orderPrice">
+    <p class= "orderPrice">
     <p>$12</p>
-        <span class="itemAmount">x1</span>
+        <span class= "itemAmount">x1</span>
     </p>
-    <button class="remove-item-btn">
+    <button class= "remove-item-btn">
         Remove item from cart
     </button>
 </li>
+
+// $("orderItem").append("orderName", "orderPrice"); */
+
+const item = $('<li>').addClass("orderItem");
+const orderName = $('<p>').text(itemName).addClass("orderName");
+const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
+const amount = $('<span>').text("x1").addClass("spanAmount");
+const button = $('<button>').text("Remove").addClass("remove-item-btn");
+
+orderPrice.append(amount);
+
+item.append(orderName, orderPrice, button);
+$("#order").append(item);
 
 
 })

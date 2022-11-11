@@ -35,6 +35,8 @@ header {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 
@@ -102,4 +104,10 @@ header {
 
      #finishedOrderlist {
         border-bottom: 1px solid black;
+     }
+
+     .orderItem {
+        font-size: 20px;
+        font-weight: bold;
+    
      }

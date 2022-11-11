@@ -63,6 +63,13 @@ dlldata.c
 *.svclog
 *.scc
 *.ds_store*
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 # Chutzpah Test files
 _Chutzpah*
 

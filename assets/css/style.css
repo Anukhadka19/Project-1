@@ -1,15 +1,24 @@
 body {
-    background-color:rgb(52, 213, 197);
+    background-color:rgb(33, 233, 206);
     text-align: center;
     height:100vh
 }
 .menuHead {
-    background-color: rgb(224, 226, 79);
+    background-color: rgb(248, 210, 249);
+    height: 90px;
 }
 
 h3 {
     font-family: 'Alex Brush', cursive;
 }
+
+.remove-item-btn {
+    font-size: 10px;
+    padding: 2px;
+    background-color: rgb(238, 77, 77);
+    color: antiquewhite;
+}
+
 
 .subMenu {
     display: flex;

@@ -135,7 +135,6 @@ function grabFoodArray(category) {
                 foodContainer.append(cardContainer);
 
             }
-
                 
             }
         })
@@ -234,5 +233,22 @@ $("main").on("click", ".addButton", function(event){
         $("#order").append(item);
     }
 })
+
+$("#orderContainer").on("click", "#clearBtn", function(event) {
+    $("#order").empty();
+    localStorage.clear(); 
+
+})
+
+
+// $('#orderContainer").on("click", "#submitBtn", function(event)) {
+//     const submitButton = event.target;
+//     $("#submit").append(submitButton);
+
+$("#orderContainer").on("click", ".remove-item-btn", function(event) {
+    const removeBtn = event.target;
+    const listItem = removeBtn.parentElement;
+    listItem.remove();
+
 
 }) (jQuery);

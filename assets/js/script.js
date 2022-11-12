@@ -97,8 +97,8 @@ function grabDrinkArray(drink) {
             console.log(error);
         })
 }
-grabDrinkArray("vodka");
-grabFoodArray("vegetarian");
+// grabDrinkArray("vodka");
+// grabFoodArray("vegetarian");
 // Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
 function grabFoodArray(category) {
     const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&api_key=1`;
@@ -249,6 +249,27 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
+
+})
+
+// Event listener for selecting drink menu
+$("#drinkSelect").on("click", function(event) {
+    const clickedOp = event.target;
+    $("#drinkMenu").empty();
+    
+    grabDrinkArray(clickedOp.value);
+})
+
+// Event listener for selecting food menu
+$("#foodSelect").on("click", function(event) {
+    const clickedOp = event.target;
+    $("#foodMenu").empty();
+    
+    grabFoodArray(clickedOp.value);
+})
+
+
+
 
 
 }) (jQuery);

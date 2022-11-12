@@ -1,57 +1,15 @@
 (function ($) {
 
-    
-    const drinkContainer = $("#drinkMenu");
-    const foodContainer = $("#foodMenu");
+//Variables
 
-    // const drinkTypeEl = document.querySelector('#drink-type');
-    // const mealInputEl = document.querySelector('#meal-input');
-    // const drinkInputEl = document.querySelector('#drink-input');
-    // const mealListEl = document.querySelector('#meal-list');
-    // console.log(drinkInputEl);
-    // const drinkNav = $("#drinkNav");
-    const orderContainer = $("#order");
+const drinkContainer = $("#drinkMenu");
+const foodContainer = $("#foodMenu");
+// const orderContainer = $("#order");
 
 
+// Functions
 
-
-    // $(".navDrinkItem").each(function (index, element) {
-    //     // console.log(element.text())
-    //     const drinkName = $(element).text();
-    //     console.log(drinkName)
-
-    //     $("body").on("click", $(this), function (event) {
-    //         event.preventDefault() 
-    //         drinkContainer.empty()
-
-    //         grabDrinkArray(drinkName)
-    //     })
-    // })
-    // $(".card").each(function (index, element) {
-    //     // console.log(element.text())
-    //     const addToOrder = $(element).attr("data-name");
-    //     console.log(addToOrder);
-
-
-
-    // $("body").on("click", $(this), function (event) {
-    //     event.preventDefault()
-    //     console.log($(this));
-    //     const menuItemToAdd = `<li class="orderItem">${addToOrder}</li>`
-    //     orderContainer.append(menuItemToAdd);
-        //     grabDrinkArray(drinkName)
-    // })
-
-//Meal selection function//
-function selectMeal() {
-
-    var mealSeclected = $("input[name=selector]:checked").val();
-    console.log(mealselection);
-}
-
-
-
-// Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
+// Makes API call (on drinks) and renders menu in the DOM
 function grabDrinkArray(drink) {
     const drinkFetchUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}&api_key=1`;
     fetch(drinkFetchUrl)
@@ -81,17 +39,15 @@ function grabDrinkArray(drink) {
                 }
             }
         })
-        // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
             console.log(error.message);
-            // window.location.href = `../html/error.html`;
+            window.location.href = `../html/error.html`;
         })
 }
-// grabDrinkArray("vodka");
-// grabFoodArray("vegetarian");
-// Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
-function grabFoodArray(category) {
-    const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&api_key=1`;
+
+// Makes API call (on food) and renders menu in the DOM
+function grabFoodArray(meal) {
+    const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${meal}&api_key=1`;
     fetch(mealFetchUrl)
         .then(function (response) {
             return response.json();
@@ -121,13 +77,11 @@ function grabFoodArray(category) {
                 }
             }
         })
-        // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
             console.log(error.message);
-            // window.location.href = `../html/error.html`;
+            window.location.href = `../html/error.html`;
         });
 }
-
 
 // Will return a dollar amount within the two numbers given (inclusive)
 function createRandomPrice(minNum, maxNum) {
@@ -175,6 +129,7 @@ function updateStorage (menuObject) {
 }
 
 
+// Event listeners
 
 // // Event lis on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
@@ -216,23 +171,21 @@ $("main").on("click", ".addButton", function(event){
         item.append(orderName, orderPrice, button);
         $("#order").append(item);
     }
-})
+});
 
+// Event listener on 'clear order' button
 $("#orderContainer").on("click", "#clearBtn", function(event) {
     $("#order").empty();
     localStorage.clear(); 
-})
+});
 
-
-// $('#orderContainer").on("click", "#submitBtn", function(event)) {
-//     const submitButton = event.target;
-//     $("#submit").append(submitButton);
-
+// Event listener on 'remove one item from order' button
+    // !! This one need more work -- going into local storage and removing just this one item from it
 $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
-})
+});
 
 // Event listener for selecting drink menu
 $("#drinkSelect").on("click", function(event) {
@@ -240,7 +193,7 @@ $("#drinkSelect").on("click", function(event) {
     $("#drinkMenu").empty();
     
     grabDrinkArray(clickedOp.value);
-})
+});
 
 // Event listener for selecting food menu
 $("#foodSelect").on("click", function(event) {
@@ -248,7 +201,12 @@ $("#foodSelect").on("click", function(event) {
     $("#foodMenu").empty();
 
     grabFoodArray(clickedOp.value);
-    
-})
+});
+
+
+// Also need a couple global level things:
+    // Empty containers? Maybe not though, that might already be happening
+    // Persisting local storage (loop thru it and add list items to order)
+
 
 }) (jQuery);

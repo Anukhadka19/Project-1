@@ -237,7 +237,6 @@ $("main").on("click", ".addButton", function(event){
 $("#orderContainer").on("click", "#clearBtn", function(event) {
     $("#order").empty();
     localStorage.clear(); 
-
 })
 
 
@@ -249,7 +248,6 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
-
 })
 
 // Event listener for selecting drink menu
@@ -260,16 +258,12 @@ $("#drinkSelect").on("click", function(event) {
     grabDrinkArray(clickedOp.value);
 })
 
-// Event listener for selecting food menu
+// Event listener for selecting drink menu
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
     
     grabFoodArray(clickedOp.value);
 })
-
-
-
-
 
 }) (jQuery);

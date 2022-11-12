@@ -21,7 +21,8 @@
             <div class="menuHead">
                 <h2 class="menu-titles is-inline is-pulled-left m-2">Drinks</h2>
                 <div class="select is-pulled-right mx-5 mt-5">
-                    <select id="drinkSelect">
+                    <label for="drinkSelect" class="is-size-4">Drink category:</label>
+                    <select id="drinkSelect" class="is-inline">
                         <option value="gin">Gin</option>
                         <option value="tequila">Tequila</option>
                         <option value="vodka">Vodka</option>
@@ -36,13 +37,14 @@
             <div class="menuHead">
                 <h2 class="menu-titles is-inline is-pulled-left m-2">Meals</h2>
                 <div class="select is-pulled-right mx-5 mt-5">
-                    <select id="foodSelect">
+                    <label for="foodSelect" class="is-size-4">Food category:</label>
+                    <select id="foodSelect" class="is-inline">
                         <option value="dessert">Dessert</option>
                         <option value="seafood">Seafood</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="breakfast">Breakfast</option>
                     </select>
-                </div> 
+                </div>
             </div>
             <div id="foodMenu" class="subMenu">
                     <!-- elements will be created in JS -->
@@ -57,7 +59,7 @@
                 <form action="./assets/html/completedOrder.html" class="is-inline">
                     <button id="orderBtn" class="button is-link is-rounded" disabled>Submit</button>
                 </form>
-                <button id="clearBtn" class="button is-danger is-rounded" disabled>Cancel</button>
+                <button id="clearBtn" class="button is-danger is-rounded" disabled>Clear</button>
             </div>
         </section>
     </main>

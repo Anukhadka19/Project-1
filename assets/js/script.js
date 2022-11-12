@@ -160,6 +160,7 @@ $("main").on("click", ".addButton", function(event){
             }
         }
     } else {
+        // Build new list item
         const item = $('<li>').addClass("orderItem m-1");
         const orderName = $('<p>').text(itemName).addClass("orderName");
         const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
@@ -176,7 +177,9 @@ $("main").on("click", ".addButton", function(event){
 // Event listener on 'clear order' button
 $("#orderContainer").on("click", "#clearBtn", function(event) {
     $("#order").empty();
-    localStorage.clear(); 
+    localStorage.clear();
+    document.getElementById('orderBtn').disabled = true;
+    document.getElementById('clearBtn').disabled = true;
 });
 
 // Event listener on 'remove one item from order' button
@@ -185,6 +188,8 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
+
+    // Have to reflect this removal in localStorage
 });
 
 // Event listener for selecting drink menu

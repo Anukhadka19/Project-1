@@ -4,7 +4,7 @@ const storageArray = JSON.parse(localStorage.getItem("orderList"));
 if (storageArray) {
     let totalPrice = 0;
     for (item of storageArray) {
-        const liEl = $('<li>').addClass('title is-6 my-3').text(`${item.name} (${item.units}) -- $${item.price}`);
+        const liEl = $('<li>').addClass('title is-size-6 my-3').text(`${item.name} (${item.units}) -- $${item.price}`);
 
         $('#finishedOrderList').append(liEl);
 

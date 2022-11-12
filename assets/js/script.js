@@ -1,7 +1,6 @@
 (function ($) {
 
-    const drinkType = ['vodka', 'rum', 'gin', 'whiskey'];
-    const mealType = ['breakfast', 'vegetarian', 'seafood', 'dessert'];
+    
     const drinkContainer = $("#drinkMenu");
     const foodContainer = $("#foodMenu");
 
@@ -10,7 +9,7 @@
     // const drinkInputEl = document.querySelector('#drink-input');
     // const mealListEl = document.querySelector('#meal-list');
     // console.log(drinkInputEl);
-    const drinkNav = $("#drinkNav");
+    // const drinkNav = $("#drinkNav");
     const orderContainer = $("#order");
 
 
@@ -50,19 +49,6 @@ function selectMeal() {
     console.log(mealselection);
 }
 
-// Submit event on the menu
-// menuEl.on('submit',handleMenuSubmit);
-
-// for (let index = 0; index < array.length; index++) {
-//     const element = array[index];
-
-// }
-
-// <li class="is-active"><a>Pictures</a></li>
-// <li><a>Music</a></li>
-// <li><a>Videos</a></li>
-// <li><a>Documents</a></li>
-
 
 
 // Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
@@ -75,7 +61,6 @@ function grabDrinkArray(drink) {
         .then(function (data) {
             console.log(data.drinks);
             if (data) {
-                const drinkArray = []
                 let results = randomSixArray(data.drinks);
                 for (let i = 0; i < 6; i++) {
                     // const drinkObject = {
@@ -83,7 +68,6 @@ function grabDrinkArray(drink) {
                     //     imgUrl: `${results[i].strDrinkThumb}`
                     // }
                     // drinkArray.push(drinkObject);
-                    console.log(drinkArray);
                     let cardContainer = $("<div>");
                     cardContainer.addClass("card");
                     cardContainer.attr("data-name", results[i].strDrink);
@@ -113,8 +97,8 @@ function grabDrinkArray(drink) {
             console.log(error);
         })
 }
-grabDrinkArray("rum");
-grabFoodArray("dessert");
+// grabDrinkArray("vodka");
+// grabFoodArray("vegetarian");
 // Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
 function grabFoodArray(category) {
     const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&api_key=1`;
@@ -124,7 +108,6 @@ function grabFoodArray(category) {
         })
         .then(function (data) {
             if (data) {
-                const mealArray = []
                 let results = randomSixArray(data.meals);
                 for (let i = 0; i < 6; i++) {
                 //     const mealObject = {
@@ -134,22 +117,22 @@ function grabFoodArray(category) {
                 //     mealArray.push(mealObject);
                 
                 let cardContainer = $("<div>");
-                    cardContainer.addClass("card");
-                    cardContainer.attr("data-name", results[i].strMeal);
-                    let imageContainer = $("<div>");
-                    imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
+                cardContainer.addClass("card");
+                cardContainer.attr("data-name", results[i].strMeal);
+                let imageContainer = $("<div>");
+                imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
-                    let contentContainer = $("<div>");
-                    contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
-                    cardContainer.append(imageContainer).append(contentContainer);
+                let contentContainer = $("<div>");
+                contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
+                cardContainer.append(imageContainer).append(contentContainer);
 
 
-                    const priceEl = $("<p>");
-                    priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
-                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
-                    contentContainer.append(priceEl,addBtnEl);
+                const priceEl = $("<p>");
+                priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
+                const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
+                contentContainer.append(priceEl,addBtnEl);
 
-                    foodContainer.append(cardContainer);
+                foodContainer.append(cardContainer);
 
             }
                 
@@ -177,47 +160,79 @@ function randomSixArray(itemArray) {
     }
     return sixArray;
 }
+
+// Updates local storage, and returns an array with instructions for updating an existing 'li'
+function updateStorage (menuObject) {
+    let needsNewLi = true;
+    let newAmount;
+    let newPrice;
+    const storageArray = JSON.parse(localStorage.getItem("orderList"));
+    if (!storageArray) {
+        // If nothing in storage, creates an array with the object in its first index (0)
+        localStorage.setItem("orderList", JSON.stringify([menuObject]));
+    } else {
+        let match = false;
+        // Check to see (by its name) if the item already exists in the order; if so, update the two values, but do not push to array
+        for (itemObj of storageArray) {
+            if (menuObject.name === itemObj.name) {
+                match = true;
+                needsNewLi = false;
+                newAmount = itemObj.units += menuObject.units;
+                newPrice = itemObj.price += menuObject.price;
+            }
+        }
+        // If it wasn't in there, just add to array
+        if (!match) {
+            storageArray.push(menuObject);
+        }
+        localStorage.setItem("orderList", JSON.stringify(storageArray));
+    }
+    return [needsNewLi, `x${newAmount}`, `$${newPrice}`];
+}
+
+
+
 // // Event lis on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
-   
-    const card = event.target.parentElement.parentElement;
-    console.log(card);
+    //Show buttons
+    document.getElementById('clearBtn').hidden = false;
+    document.getElementById('orderBtn').hidden = false;
 
+    //Grab values from card
+    const card = event.target.parentElement.parentElement;
     const itemName = card.children[1].children[0].innerText;
     const price = card.children[1].children[1].innerText;
-    console.log(itemName, price);
 
     const priceArray = price.split(" ")
     const priceOnly = priceArray[1];
 
-/* <li class= "orderItem">
-    <p class= "orderName">
-    <p>meal name</p> 
-    </p>
-    <p class= "orderPrice">
-    <p>$12</p>
-        <span class= "itemAmount">x1</span>
-    </p>
-    <button class= "remove-item-btn">
-        Remove item from cart
-    </button>
-</li>
+    //Build object for storage; run the function on it
+    const menuObject = {name: itemName, price: parseInt(priceOnly.slice(1)), units: 1};
+    const storageResult = updateStorage(menuObject);
 
-// $("orderItem").append("orderName", "orderPrice"); */
-
-const item = $('<li>').addClass("orderItem");
-const orderName = $('<p>').text(itemName).addClass("orderName");
-const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
-const amount = $('<span>').text("x1").addClass("spanAmount");
-const button = $('<button>').text("Remove").addClass("remove-item-btn");
-
-orderPrice.append(amount);
-
-item.append(orderName, orderPrice, button);
-$("#order").append(item);
-
+    if (!storageResult[0]) {
+        //Select all existing list items
+        const allLis = $('.orderItem');
+        // Match name and update that list item (amount and price)
+        for (listItem of allLis) {
+            if (listItem.children[0].innerText === itemName) {
+                listItem.children[1].firstChild.textContent = storageResult[2];
+                listItem.children[1].children[0].innerText = storageResult[1];
+            }
+        }
+    } else {
+        const item = $('<li>').addClass("orderItem");
+        const orderName = $('<p>').text(itemName).addClass("orderName");
+        const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
+        const amount = $('<span>').text("x1").addClass("spanAmount");
+        const button = $('<button>').text("Remove").addClass("remove-item-btn");
+    
+        orderPrice.append(amount);
+    
+        item.append(orderName, orderPrice, button);
+        $("#order").append(item);
+    }
 })
-// Event listener clears button and empties local storage
 
 $("#orderContainer").on("click", "#clearBtn", function(event) {
     $("#order").empty();
@@ -234,7 +249,24 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
+
 })
+
+// Event listener for selecting drink menu
+$("#drinkSelect").on("click", function(event) {
+    const clickedOp = event.target;
+    $("#drinkMenu").empty();
+    
+    grabDrinkArray(clickedOp.value);
+})
+// Event listener for selecting drink menu
+$("#foodSelect").on("click", function(event) {
+    const clickedOp = event.target;
+    $("#foodMenu").empty();
+    
+    grabFoodArray(clickedOp.value);
+})
+
 
 
 

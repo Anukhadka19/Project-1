@@ -53,21 +53,15 @@ function selectMeal() {
 
 // Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
 function grabDrinkArray(drink) {
-    const drinkFetchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}&api_key=1`;
+    const drinkFetchUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}&api_key=1`;
     fetch(drinkFetchUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data.drinks);
             if (data) {
                 let results = randomSixArray(data.drinks);
                 for (let i = 0; i < 6; i++) {
-                    // const drinkObject = {
-                    //     name: `${results[i].strDrink}`,
-                    //     imgUrl: `${results[i].strDrinkThumb}`
-                    // }
-                    // drinkArray.push(drinkObject);
                     let cardContainer = $("<div>");
                     cardContainer.addClass("card");
                     cardContainer.attr("data-name", results[i].strDrink);
@@ -78,23 +72,19 @@ function grabDrinkArray(drink) {
                     contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strDrink}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
-
                     const priceEl = $("<p>");
                     priceEl.addClass("subtitle is-6").text(createRandomPrice(8, 20));
                     const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
                     contentContainer.append(priceEl,addBtnEl);
 
                     drinkContainer.append(cardContainer);
-
-
                 }
-
-
             }
         })
         // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
+            // window.location.href = `../html/error.html`;
         })
 }
 // grabDrinkArray("vodka");
@@ -110,37 +100,31 @@ function grabFoodArray(category) {
             if (data) {
                 let results = randomSixArray(data.meals);
                 for (let i = 0; i < 6; i++) {
-                //     const mealObject = {
-                //         name: `${results[i].strMeal}`,
-                //         imgUrl: `${results[i].strMealThumb}`
-                //     }
-                //     mealArray.push(mealObject);
-                
-                let cardContainer = $("<div>");
-                cardContainer.addClass("card");
-                cardContainer.attr("data-name", results[i].strMeal);
-                let imageContainer = $("<div>");
-                imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
-                let contentContainer = $("<div>");
-                contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
-                cardContainer.append(imageContainer).append(contentContainer);
+                    let cardContainer = $("<div>");
+                    cardContainer.addClass("card");
+                    cardContainer.attr("data-name", results[i].strMeal);
+                    let imageContainer = $("<div>");
+                    imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
+                    let contentContainer = $("<div>");
+                    contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
+                    cardContainer.append(imageContainer).append(contentContainer);
 
-                const priceEl = $("<p>");
-                priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
-                const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
-                contentContainer.append(priceEl,addBtnEl);
+                    const priceEl = $("<p>");
+                    priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
+                    contentContainer.append(priceEl,addBtnEl);
 
-                foodContainer.append(cardContainer);
+                    foodContainer.append(cardContainer);
 
-            }
-                
+                }
             }
         })
         // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
             console.log(error.message);
+            // window.location.href = `../html/error.html`;
         });
 }
 
@@ -195,8 +179,8 @@ function updateStorage (menuObject) {
 // // Event lis on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
     //Show buttons
-    document.getElementById('clearBtn').hidden = false;
-    document.getElementById('orderBtn').hidden = false;
+    document.getElementById('clearBtn').disabled = false;
+    document.getElementById('orderBtn').disabled = false;
 
     //Grab values from card
     const card = event.target.parentElement.parentElement;
@@ -221,7 +205,7 @@ $("main").on("click", ".addButton", function(event){
             }
         }
     } else {
-        const item = $('<li>').addClass("orderItem");
+        const item = $('<li>').addClass("orderItem m-1");
         const orderName = $('<p>').text(itemName).addClass("orderName");
         const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
         const amount = $('<span>').text("x1").addClass("spanAmount");
@@ -258,12 +242,13 @@ $("#drinkSelect").on("click", function(event) {
     grabDrinkArray(clickedOp.value);
 })
 
-// Event listener for selecting drink menu
+// Event listener for selecting food menu
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
-    
+
     grabFoodArray(clickedOp.value);
+    
 })
 
 }) (jQuery);

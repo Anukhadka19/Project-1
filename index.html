@@ -16,16 +16,16 @@
     <header>
         <h1>Welcome to the Boozy Chef</h1>
     </header>
-    <main class="columns m-1">
+    <main class="columns m-1 mb-5">
         <section id="menuContainer" class="column is-four-fifths"> 
             <div class="menuHead">
                 <h2 class="menu-titles is-inline is-pulled-left m-2">Drinks</h2>
-                <div class="select is-multiple is-pulled-right mx-4 mt-4">
-                    <select multiple size="1">
-                      <option value="gin">Gin</option>
-                      <option value="tequila">Tequila</option>
-                      <option value="vodka">Vodka</option>
-                      <option value="rum">Rum</option>
+                <div class="select is-pulled-right mx-5 mt-5">
+                    <select id="drinkSelect">
+                        <option value="gin">Gin</option>
+                        <option value="tequila">Tequila</option>
+                        <option value="vodka">Vodka</option>
+                        <option value="rum">Rum</option>
                     </select>
                 </div>
             </div>
@@ -35,13 +35,13 @@
        
             <div class="menuHead">
                 <h2 class="menu-titles is-inline is-pulled-left m-2">Meals</h2>
-                <div class="select is-multiple is-pulled-right mx-4 mt-4">
-                    <select multiple size="1">
+                <div class="select is-pulled-right mx-5 mt-5">
+                    <select id="foodSelect">
                         <option value="dessert">Dessert</option>
                         <option value="seafood">Seafood</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="breakfast">Breakfast</option>
-                      </select>
+                    </select>
                 </div> 
             </div>
             <div id="foodMenu" class="subMenu">
@@ -54,8 +54,10 @@
                 <ul id="order">
                     <!-- add li's dynamically -->
                 </ul>
-                <button class="button is-link is-rounded">Submit</button>
-                <button class="button is-danger is-rounded">Cancel</button>
+                <form action="./assets/html/completedOrder.html" class="is-inline">
+                    <button id="orderBtn" class="button is-link is-rounded" disabled>Submit</button>
+                </form>
+                <button id="clearBtn" class="button is-danger is-rounded" disabled>Cancel</button>
             </div>
         </section>
     </main>

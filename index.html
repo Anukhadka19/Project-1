@@ -1,70 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Boozy Chef</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
 </head>
 
 <body>
-    <header>
-        <h1>Welcome to the Boozy Chef</h1>
+    <header class="mb-2">
+        Welcome to the Boozy Chef -- RANDO STYLE
     </header>
-    <main class="columns m-1">
-        <section id="menuContainer" class="column is-four-fifths">
-            
-            <div class="menuHead">
-                <h2 class="menu-titles">Drinks</h2>
-                <div class="select is-multiple">
-                    <select multiple size="4">
-                      <option value="gin">Gin</option>
-                      <option value="tequila">Tequila</option>
-                      <option value="vodka">Vodka</option>
-                      <option value="rum">Rum</option>
-                    </select>
+    <main class="columns">
+        <section id="menuContainer" class="column is-four-fifths has-background-warning">
+            <div id="drinkMenu" class="">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-3">
+                            SOME DISH NAME
+                        </p>
+                        <p class="subtitle is-6">
+                            description
+                        </p>
+                    </div>
                 </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-3">
+                            SOME DISH NAME
+                        </p>
+                        <p class="subtitle is-6">
+                            description
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p class="title is-3">
+                            SOME DISH NAME
+                        </p>
+                        <p class="subtitle is-6">
+                            description
+                        </p>
+                    </div>
+                </div>
+                <!-- elements will be created in JS -->
             </div>
-            <div id="drinkMenu" class="subMenu">
-                    <!-- elements will be created in JS -->
+            <div id="foodMenu" class="">
+                <!-- elements will be created in JS -->
             </div>
-            
-            <div class="menuHead">
-                <h2 class="menu-titles">Meals</h2>
-                <select multiple size="4">
-                    <option value="dessert">Dessert</option>
-                    <option value="seafood">Seafood</option>
-                    <option value="vegetarian">Vegetarian</option>
-                    <option value="breakfast">Breakfast</option>
-                  </select>
-            </div>
-            <div id="foodMenu" class="subMenu">
-                    <!-- elements will be created in JS -->
-            </div>
-            
         </section>
-        <section id="orderContainer" class="has-background-primary column is-one-fifth">
-            <div id="stickyContainer">
-                <h3>Your Order:</h3>
-                <ul id="order">
-                    <!-- add li's dynamically -->
-                </ul>
-                <button id="clearBtn" hidden>Cancel</button>
-                <form action="./assets/html/completedOrder.html"><button id="orderBtn" hidden>Submit</button>
-                </form>
-            </div>
+        <section id="orderContainer" class="has-background-danger column is-one-fifth">
+            <h3>Your Order:</h3>
+            <!-- will be a ul that gets added one by one as items are ordered -->
+            <ul id="order">
+                <li class="orderItem">
+                    <p class="orderName">
+                        meal name
+                    </p>
+                    <p class="orderDescription">
+                        description
+                    </p>
+                </li>
+                <li class="orderItem">
+                    <p class="orderName">
+                        meal name
+                    </p>
+                    <p class="orderDescription">
+                        description
+                    </p>
+                </li>
+                <li class="orderItem">
+                    <p class="orderName">
+                        meal name
+                    </p>
+                    <p class="orderDescription">
+                        description
+                    </p>
+                </li>
+            </ul>
         </section>
     </main>
     <footer>
-        NTT Inc. &#169;(fake)
+        Nu Ty Ty Productions
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <!-- add jQuery -->
+    <script src="./testScript.js"></script>
 </body>
+</html
 
-</html>
+

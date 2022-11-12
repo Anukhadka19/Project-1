@@ -21,7 +21,7 @@
             <div class="menuHead">
                 <h2 class="menu-titles">Drinks</h2>
                 <div class="select is-multiple">
-                    <select multiple size="4">
+                    <select id="drinkSelect" multiple size="4">
                       <option value="gin">Gin</option>
                       <option value="tequila">Tequila</option>
                       <option value="vodka">Vodka</option>
@@ -35,7 +35,7 @@
             
             <div class="menuHead">
                 <h2 class="menu-titles">Meals</h2>
-                <select multiple size="4">
+                <select id="foodSelect" multiple size="4">
                     <option value="dessert">Dessert</option>
                     <option value="seafood">Seafood</option>
                     <option value="vegetarian">Vegetarian</option>
@@ -53,7 +53,8 @@
                 <ul id="order">
                     <!-- add li's dynamically -->
                 </ul>
-                <button id="clearBtn">Cancel Order</button>
+                <button id="clearBtn" hidden>Cancel Order</button>
+                <button id="orderBtn" hidden>Submit Order</button>
             </div>
         </section>
     </main>

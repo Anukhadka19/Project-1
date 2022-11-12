@@ -1,8 +1,9 @@
 body {
     background-color:rgb(218, 228, 236);
     text-align: center;
-    /* height:100vh */
+    min-height: 100vh;
 }
+
 .menuHead {
     background-color: rgb(248, 210, 249);
     height: 90px;
@@ -18,7 +19,6 @@ h3 {
     background-color: rgb(238, 77, 77);
     color: antiquewhite;
 }
-
 
 .subMenu {
     display: flex;
@@ -53,15 +53,13 @@ header {
     font-size: larger;
 }
 
-
-#stickyContainer{
+#stickyContainer {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
   font-size: 30px;
   font-weight: bold;
 }
-
 
 #order li {
     border: 1px solid black;
@@ -83,10 +81,11 @@ header {
     margin: 1em 0.2em;
     min-width: 300px;   
 }
+
 .card-special {
     display: flex;
     flex-direction: column;
-    align-content:  flex-end
+    align-content:  flex-end;
     /* background-color: black !important; */
     /* height: fit-content */
 }
@@ -101,46 +100,49 @@ header {
     border: 1px solid rgb(8, 97, 145);
     background-color: rgb(110, 209, 231);
     width: 100%;
-   }
+}
 
 .addButton:hover {
     background-color: rgb(7, 76, 179);
     font-weight: 600;
     cursor: pointer;
-   }
+}
 
 #orderContainer {
     font-size: 20px;
     border:  1px solid black;
     padding: 0%;
-
-   }
+}
 
 footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: rgb(94, 148, 220);
-        color: white;
-        text-align: center;
-        font-family: 'Alex Brush', cursive;
-     }
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(94, 148, 220);
+    color: white;
+    text-align: center;
+    font-family: 'Alex Brush', cursive;
+    }
 
 #finishedOrderlist {
         border-bottom: 1px solid black;
      }
 
-     .orderItem {
-        font-size: 15px;
-        font-weight: bold;
-    
-     }
+.orderItem {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.sum {
+    border-top: 2px solid black;
+}
 
 @media (max-width: 800px) {
-      header { 
+    header { 
         display: none;
-      }
+    }
 }
 
 

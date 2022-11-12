@@ -1,73 +1,25 @@
 (function ($) {
 
-    
-    const drinkContainer = $("#drinkMenu");
-    const foodContainer = $("#foodMenu");
+//Variables
 
-    // const drinkTypeEl = document.querySelector('#drink-type');
-    // const mealInputEl = document.querySelector('#meal-input');
-    // const drinkInputEl = document.querySelector('#drink-input');
-    // const mealListEl = document.querySelector('#meal-list');
-    // console.log(drinkInputEl);
-    // const drinkNav = $("#drinkNav");
-    const orderContainer = $("#order");
+const drinkContainer = $("#drinkMenu");
+const foodContainer = $("#foodMenu");
+// const orderContainer = $("#order");
 
 
+// Functions
 
-
-    // $(".navDrinkItem").each(function (index, element) {
-    //     // console.log(element.text())
-    //     const drinkName = $(element).text();
-    //     console.log(drinkName)
-
-    //     $("body").on("click", $(this), function (event) {
-    //         event.preventDefault() 
-    //         drinkContainer.empty()
-
-    //         grabDrinkArray(drinkName)
-    //     })
-    // })
-    // $(".card").each(function (index, element) {
-    //     // console.log(element.text())
-    //     const addToOrder = $(element).attr("data-name");
-    //     console.log(addToOrder);
-
-
-
-    // $("body").on("click", $(this), function (event) {
-    //     event.preventDefault()
-    //     console.log($(this));
-    //     const menuItemToAdd = `<li class="orderItem">${addToOrder}</li>`
-    //     orderContainer.append(menuItemToAdd);
-        //     grabDrinkArray(drinkName)
-    // })
-
-//Meal selection function//
-function selectMeal() {
-
-    var mealSeclected = $("input[name=selector]:checked").val();
-    console.log(mealselection);
-}
-
-
-
-// Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
+// Makes API call (on drinks) and renders menu in the DOM
 function grabDrinkArray(drink) {
-    const drinkFetchUrl = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}&api_key=1`;
+    const drinkFetchUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${drink}&api_key=1`;
     fetch(drinkFetchUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data.drinks);
             if (data) {
                 let results = randomSixArray(data.drinks);
                 for (let i = 0; i < 6; i++) {
-                    // const drinkObject = {
-                    //     name: `${results[i].strDrink}`,
-                    //     imgUrl: `${results[i].strDrinkThumb}`
-                    // }
-                    // drinkArray.push(drinkObject);
                     let cardContainer = $("<div>");
                     cardContainer.addClass("card");
                     cardContainer.attr("data-name", results[i].strDrink);
@@ -78,30 +30,24 @@ function grabDrinkArray(drink) {
                     contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strDrink}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
-
                     const priceEl = $("<p>");
                     priceEl.addClass("subtitle is-6").text(createRandomPrice(8, 20));
                     const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
                     contentContainer.append(priceEl,addBtnEl);
 
                     drinkContainer.append(cardContainer);
-
-
                 }
-
-
             }
         })
-        // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
-            console.log(error);
+            console.log(error.message);
+            window.location.href = `../html/error.html`;
         })
 }
-// grabDrinkArray("vodka");
-// grabFoodArray("vegetarian");
-// Need to make sure the 'category' passed in matches exactly one/any of the potential user inputs -- meaning the 'select' options should be exactly the same
-function grabFoodArray(category) {
-    const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&api_key=1`;
+
+// Makes API call (on food) and renders menu in the DOM
+function grabFoodArray(meal) {
+    const mealFetchUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${meal}&api_key=1`;
     fetch(mealFetchUrl)
         .then(function (response) {
             return response.json();
@@ -110,40 +56,32 @@ function grabFoodArray(category) {
             if (data) {
                 let results = randomSixArray(data.meals);
                 for (let i = 0; i < 6; i++) {
-                //     const mealObject = {
-                //         name: `${results[i].strMeal}`,
-                //         imgUrl: `${results[i].strMealThumb}`
-                //     }
-                //     mealArray.push(mealObject);
-                
-                let cardContainer = $("<div>");
-                cardContainer.addClass("card");
-                cardContainer.attr("data-name", results[i].strMeal);
-                let imageContainer = $("<div>");
-                imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
-                let contentContainer = $("<div>");
-                contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
-                cardContainer.append(imageContainer).append(contentContainer);
+                    let cardContainer = $("<div>");
+                    cardContainer.addClass("card");
+                    cardContainer.attr("data-name", results[i].strMeal);
+                    let imageContainer = $("<div>");
+                    imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
+                    let contentContainer = $("<div>");
+                    contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
+                    cardContainer.append(imageContainer).append(contentContainer);
 
-                const priceEl = $("<p>");
-                priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
-                const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
-                contentContainer.append(priceEl,addBtnEl);
+                    const priceEl = $("<p>");
+                    priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
+                    contentContainer.append(priceEl,addBtnEl);
 
-                foodContainer.append(cardContainer);
+                    foodContainer.append(cardContainer);
 
-            }
-                
+                }
             }
         })
-        // Will want to do more (eventually) than just logging the error message
         .catch(function (error) {
             console.log(error.message);
+            window.location.href = `../html/error.html`;
         });
 }
-
 
 // Will return a dollar amount within the two numbers given (inclusive)
 function createRandomPrice(minNum, maxNum) {
@@ -191,12 +129,13 @@ function updateStorage (menuObject) {
 }
 
 
+// Event listeners
 
 // // Event lis on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
     //Show buttons
-    document.getElementById('clearBtn').hidden = false;
-    document.getElementById('orderBtn').hidden = false;
+    document.getElementById('clearBtn').disabled = false;
+    document.getElementById('orderBtn').disabled = false;
 
     //Grab values from card
     const card = event.target.parentElement.parentElement;
@@ -221,7 +160,8 @@ $("main").on("click", ".addButton", function(event){
             }
         }
     } else {
-        const item = $('<li>').addClass("orderItem");
+        // Build new list item
+        const item = $('<li>').addClass("orderItem m-1");
         const orderName = $('<p>').text(itemName).addClass("orderName");
         const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
         const amount = $('<span>').text("x1").addClass("spanAmount");
@@ -232,23 +172,25 @@ $("main").on("click", ".addButton", function(event){
         item.append(orderName, orderPrice, button);
         $("#order").append(item);
     }
-})
+});
 
+// Event listener on 'clear order' button
 $("#orderContainer").on("click", "#clearBtn", function(event) {
     $("#order").empty();
-    localStorage.clear(); 
-})
+    localStorage.clear();
+    document.getElementById('orderBtn').disabled = true;
+    document.getElementById('clearBtn').disabled = true;
+});
 
-
-// $('#orderContainer").on("click", "#submitBtn", function(event)) {
-//     const submitButton = event.target;
-//     $("#submit").append(submitButton);
-
+// Event listener on 'remove one item from order' button
+    // !! This one need more work -- going into local storage and removing just this one item from it
 $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
     listItem.remove();
-})
+
+    // Have to reflect this removal in localStorage
+});
 
 // Event listener for selecting drink menu
 $("#drinkSelect").on("click", function(event) {
@@ -256,14 +198,20 @@ $("#drinkSelect").on("click", function(event) {
     $("#drinkMenu").empty();
     
     grabDrinkArray(clickedOp.value);
-})
+});
 
-// Event listener for selecting drink menu
+// Event listener for selecting food menu
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
-    
+
     grabFoodArray(clickedOp.value);
-})
+});
+
+
+// Also need a couple global level things:
+    // Empty containers? Maybe not though, that might already be happening
+    // Persisting local storage (loop thru it and add list items to order)
+
 
 }) (jQuery);

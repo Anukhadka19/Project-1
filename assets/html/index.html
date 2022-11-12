@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/css/reset.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +31,7 @@
                 </div>
             </div>
             <div id="drinkMenu" class="subMenu">
+                
                     <!-- elements will be created in JS -->
             </div>
             
@@ -41,20 +43,34 @@
                     <option value="vegetarian">Vegetarian</option>
                     <option value="breakfast">Breakfast</option>
                   </select>
+                  
             </div>
             <div id="foodMenu" class="subMenu">
                     <!-- elements will be created in JS -->
             </div>
             
         </section>
-        <section id="orderContainer" class="has-background-primary column is-one-fifth">
+        <section id="orderContainer" class="has-background-warning column is-one-fifth">
             <div id="stickyContainer">
                 <h3>Your Order:</h3>
                 <ul id="order">
-                    <!-- add li's dynamically -->
+                    <li class="orderItem m-1">
+                        <p class="orderName">
+                            Meal Name
+                            </p>
+                        <p class="orderPrice">
+                            $16
+                            <span class="itemAmount">x1</span>
+                        </p>
+                        <button class="button is-danger is-rounded is-8">Remove</button>
+    
+                        </button>
+                    </li>
+ <!-- add li's dynamically -->
                 </ul>
-                <button id="clearBtn" hidden>Cancel Order</button>
-                <button id="orderBtn" hidden>Submit Order</button>
+                <button class="button is-link is-rounded">Submit</button>
+                <button class="button is-danger is-rounded">Cancel</button>
+                
             </div>
         </section>
     </main>

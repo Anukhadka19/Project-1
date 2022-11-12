@@ -152,7 +152,6 @@ function grabFoodArray(category) {
                     foodContainer.append(cardContainer);
 
             }
-
                 
             }
         })
@@ -217,13 +216,27 @@ orderPrice.append(amount);
 item.append(orderName, orderPrice, button);
 $("#order").append(item);
 
-// Build objects and add to storage
-
-$("#BorderContainer").on("click", "#clearBtn", function(event)) {
-    const clearButton = event.target;
-    $("#order") = 
-
-}
 })
+// Event listener clears button and empties local storage
+
+$("#orderContainer").on("click", "#clearBtn", function(event) {
+    $("#order").empty();
+    localStorage.clear(); 
+
+})
+
+
+// $('#orderContainer").on("click", "#submitBtn", function(event)) {
+//     const submitButton = event.target;
+//     $("#submit").append(submitButton);
+
+$("#orderContainer").on("click", ".remove-item-btn", function(event) {
+    const removeBtn = event.target;
+    const listItem = removeBtn.parentElement;
+    listItem.remove();
+})
+
+
+
 
 }) (jQuery);

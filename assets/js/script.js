@@ -27,12 +27,12 @@ function grabDrinkArray(drink) {
                     imageContainer.addClass("card-image").html(`<img src="${results[i].strDrinkThumb}" alt="${results[i].strDrink}" class="responsive">`)
 
                     let contentContainer = $("<div>");
-                    contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strDrink}</p>`);
+                    contentContainer.addClass("card-content").html(`<p class="title is-size-4">${results[i].strDrink}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
                     const priceEl = $("<p>");
-                    priceEl.addClass("subtitle is-6").text(createRandomPrice(8, 20));
-                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
+                    priceEl.addClass("subtitle is-size-6").text(createRandomPrice(8, 20));
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 addButton');
                     contentContainer.append(priceEl,addBtnEl);
 
                     drinkContainer.append(cardContainer);
@@ -64,12 +64,12 @@ function grabFoodArray(meal) {
                     imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
                     let contentContainer = $("<div>");
-                    contentContainer.addClass("card-content").html(`<p class="title is-4">${results[i].strMeal}</p>`);
+                    contentContainer.addClass("card-content").html(`<p class="title is-size-4">${results[i].strMeal}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
                     const priceEl = $("<p>");
-                    priceEl.addClass("subtitle is-6").text(createRandomPrice(10, 30));
-                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-6 has-text-white p-1 addButton');
+                    priceEl.addClass("subtitle is-size-6").text(createRandomPrice(10, 30));
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 addButton');
                     contentContainer.append(priceEl,addBtnEl);
 
                     foodContainer.append(cardContainer);
@@ -133,7 +133,7 @@ function updateStorage (menuObject) {
 
 // // Event lis on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
-    //Show buttons
+    //Enable buttons
     document.getElementById('clearBtn').disabled = false;
     document.getElementById('orderBtn').disabled = false;
 
@@ -187,9 +187,31 @@ $("#orderContainer").on("click", "#clearBtn", function(event) {
 $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
-    listItem.remove();
 
-    // Have to reflect this removal in localStorage
+    // Remove the ONE from lcoal sotrage with matching name
+    const liName = listItem.children[0].innerText;
+    const storedArray = JSON.parse(localStorage.getItem("orderList"));
+    // Almost certainly don't need the broad level 'if', but it's just a safeguard
+    if (storedArray) {
+        for (let i = 0; i < storedArray.length; i++) {
+            if (liName === storedArray[i].name) {
+                storedArray.splice(i, 1);
+                break;
+            }
+        }
+    }
+    //Have to add this in the case there was only one item in there, but then was removed
+    if (storedArray.length) {
+        localStorage.setItem("orderList", JSON.stringify(storedArray));
+    } else {
+        // Need to clear local storage instead of putting an empty array back in
+            // This is due to how a first object goes into storage is 'updateStorage' function
+        localStorage.clear();
+        document.getElementById('orderBtn').disabled = true;
+        document.getElementById('clearBtn').disabled = true;
+    }
+    // Remove from DOM
+    listItem.remove();
 });
 
 // Event listener for selecting drink menu

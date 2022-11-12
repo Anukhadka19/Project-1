@@ -1,7 +1,7 @@
 body {
-    background-color:rgb(33, 233, 206);
+    background-color:rgb(218, 228, 236);
     text-align: center;
-    height:100vh
+    /* height:100vh */
 }
 .menuHead {
     background-color: rgb(248, 210, 249);
@@ -97,26 +97,26 @@ header {
     height: auto;
 }
 
-   .addButton {
+.addButton {
     border: 1px solid rgb(8, 97, 145);
     background-color: rgb(110, 209, 231);
     width: 100%;
    }
 
-   .addButton:hover {
+.addButton:hover {
     background-color: rgb(7, 76, 179);
     font-weight: 600;
     cursor: pointer;
    }
 
-   #orderContainer {
+#orderContainer {
     font-size: 20px;
     border:  1px solid black;
     padding: 0%;
 
    }
 
-   footer {
+footer {
         position: fixed;
         left: 0;
         bottom: 0;
@@ -127,7 +127,7 @@ header {
         font-family: 'Alex Brush', cursive;
      }
 
-     #finishedOrderlist {
+#finishedOrderlist {
         border-bottom: 1px solid black;
      }
 
@@ -136,3 +136,11 @@ header {
         font-weight: bold;
     
      }
+
+@media (max-width: 800px) {
+      header { 
+        display: none;
+      }
+}
+
+

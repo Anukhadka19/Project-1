@@ -111,7 +111,7 @@ function updateStorage (menuObject) {
     } else {
         let match = false;
         // Check to see (by its name) if the item already exists in the order; if so, update the two values, but do not push to array
-        for (itemObj of storageArray) {
+        for (let itemObj of storageArray) {
             if (menuObject.name === itemObj.name) {
                 match = true;
                 needsNewLi = false;
@@ -126,6 +126,27 @@ function updateStorage (menuObject) {
         localStorage.setItem("orderList", JSON.stringify(storageArray));
     }
     return [needsNewLi, `x${newAmount}`, `$${newPrice}`];
+}
+
+// Upon page load, if there are items in the order (i.e. localStorage), add them to the DOM ('your order')
+function persistStorage() {
+    const storageArray = JSON.parse(localStorage.getItem("orderList"));
+    if (storageArray) {
+        for (let arrayObj of storageArray) {
+            const item = $('<li>').addClass("orderItem m-1");
+            const orderName = $('<p>').text(arrayObj.name).addClass("orderName");
+            const orderPrice = $('<p>').text(`$${arrayObj.price}`).addClass("orderPrice");
+            const amount = $('<span>').text(`x${arrayObj.units}`).addClass("spanAmount");
+            const button = $('<button>').text("Remove").addClass("remove-item-btn");
+        
+            orderPrice.append(amount);
+        
+            item.append(orderName, orderPrice, button);
+            $("#order").append(item);
+        }
+        document.getElementById('clearBtn').disabled = false;
+        document.getElementById('orderBtn').disabled = false;
+    }
 }
 
 
@@ -153,7 +174,7 @@ $("main").on("click", ".addButton", function(event){
         //Select all existing list items
         const allLis = $('.orderItem');
         // Match name and update that list item (amount and price)
-        for (listItem of allLis) {
+        for (let listItem of allLis) {
             if (listItem.children[0].innerText === itemName) {
                 listItem.children[1].firstChild.textContent = storageResult[2];
                 listItem.children[1].children[0].innerText = storageResult[1];
@@ -231,9 +252,8 @@ $("#foodSelect").on("click", function(event) {
 });
 
 
-// Also need a couple global level things:
-    // Empty containers? Maybe not though, that might already be happening
-    // Persisting local storage (loop thru it and add list items to order)
+// Call function which loads the user's order, if there are still items in there
+persistStorage();
 
 
 }) (jQuery);

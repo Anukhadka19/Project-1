@@ -27,6 +27,8 @@ h3 {
     color: cornflowerblue;
     padding-bottom: 0em;
     background-color: rgb(96, 230, 226);
+    min-height: 150px;
+    border: solid;
 }
 
 .menu-titles {
@@ -111,8 +113,9 @@ header {
 
 #orderContainer {
     font-size: 20px;
-    border:  1px solid black;
+    border:  3px solid black;
     padding: 0%;
+    border-radius: 5px;
 
    }
 

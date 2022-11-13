@@ -56,9 +56,10 @@
                 <ul id="order">
                     <!-- add li's dynamically -->
                 </ul>
-                <form action="./assets/html/completedOrder.html" class="is-inline">
-                    <button id="orderBtn" class="button is-link is-rounded" disabled>Submit</button>
-                </form>
+                <!-- Trigger button for the modal: -->
+                <button id="orderBtn" class="js-modal-trigger button is-link is-rounded" data-target="modal-js-example" disabled>
+                    Submit
+                </button>
                 <button id="clearBtn" class="button is-danger is-rounded" disabled>Clear</button>
             </div>
         </section>
@@ -69,6 +70,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
+
+    <!-- HTML for modal -->
+
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+      
+        <div class="modal-content">
+            <div class="box">
+                <p class="mb-4">Finalize order submission? Click away to cancel.</p>
+
+                <button class="modal-close is-large button is-danger is-rounded" aria-label="close"></button>
+                <form action="./assets/html/completedOrder.html" class="is-inline">
+                    <button id="confirmOrderBtn" class="button is-link is-rounded">Confirm Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

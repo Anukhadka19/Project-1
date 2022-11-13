@@ -235,11 +235,14 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     listItem.remove();
 });
 
+const menuMsg = document.querySelectorAll(".menu-msg");
+
 // Event listener for selecting drink menu
 $("#drinkSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#drinkMenu").empty();
-    
+    menuMsg[0].hidden = true;
+
     grabDrinkArray(clickedOp.value);
 });
 
@@ -247,9 +250,10 @@ $("#drinkSelect").on("click", function(event) {
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
-
+    menuMsg[1].hidden = true;
+    
     grabFoodArray(clickedOp.value);
-});
+})
 
 
 
@@ -300,10 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
 // Call function which loads the user's order, if there are still items in there
 persistStorage();
+
+
 
 
 }) (jQuery);

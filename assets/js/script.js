@@ -241,7 +241,7 @@ const menuMsg = document.querySelectorAll(".menu-msg");
 $("#drinkSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#drinkMenu").empty();
-    // menuMsg[0].hidden = true;
+    menuMsg[0].hidden = true;
 
     grabDrinkArray(clickedOp.value);
 });
@@ -250,7 +250,7 @@ $("#drinkSelect").on("click", function(event) {
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
-    // menuMsg[1].hidden = true;
+    menuMsg[1].hidden = true;
     
     grabFoodArray(clickedOp.value);
 })

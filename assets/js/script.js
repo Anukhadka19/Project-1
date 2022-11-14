@@ -238,7 +238,7 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
 const menuMsg = document.querySelectorAll(".menu-msg");
 
 // Event listener for selecting drink menu
-$("#drinkSelect").on("click", function(event) {
+$("#drinkSelect").on("change", function(event) {
     const clickedOp = event.target;
     $("#drinkMenu").empty();
     menuMsg[0].hidden = true;
@@ -247,7 +247,7 @@ $("#drinkSelect").on("click", function(event) {
 });
 
 // Event listener for selecting food menu
-$("#foodSelect").on("click", function(event) {
+$("#foodSelect").on("change", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
     menuMsg[1].hidden = true;

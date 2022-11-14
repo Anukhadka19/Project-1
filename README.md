@@ -18,16 +18,16 @@ N/A
 
 Display the menu on Main page.
 User selects items from the menu to put into the virtual shopping cart that contains the net order. 
-(items can also be removed from the current working order)
+(Items can also be removed from the current working order)
 When finished selecting items they’ll have the option of submitting an order or canceling it.
 When the user hits submit, a modal appears asking to confirm the order.
 Once confirmed, a new page is displayed with the order and its total price.
 From the confirmation screen they can navigate back to the main menu.
 
 
-Screenshot(s):  https://anukhadka19.github.io/food-drinks-ordering-service/
+Screenshot(s):
 
-Link to live site: 
+Link to live site: https://anukhadka19.github.io/food-drinks-ordering-service/
 
 
 ## Flaws/Comments
@@ -44,7 +44,9 @@ https://www.thecocktaildb.com/api.php
 
 ## Credits
 
-
+Bulma
+JQuery
+Google Fonts
 
 ## License
 

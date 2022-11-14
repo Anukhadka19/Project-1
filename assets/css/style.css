@@ -4,9 +4,12 @@ body {
     min-height: 100vh;
 }
 
-.menuHead {
-    background-color: rgb(248, 210, 249);
-    height: 90px;
+header {
+    height: 80px;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(42, 109, 233);
+    font-family: 'Courgette', cursive;
 }
 
 h3 {
@@ -31,18 +34,15 @@ h3 {
     border: solid;
 }
 
+.menuHead {
+    background-color: rgb(248, 210, 249);
+    min-height: 90px;
+}
+
 .menu-titles {
     font-size: 3em;
     font-weight: bold;
     font-family: 'Alex Brush', cursive;
-}
-
-header {
-    height: 80px;
-    text-align: center;
-    font-size: 60px;
-    color: rgb(42, 109, 233);
-    font-family: 'Courgette', cursive;
 }
 
 #menuContainer > div {
@@ -117,20 +117,9 @@ header {
     border-radius: 5px;
 }
 
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(94, 148, 220);
-    color: white;
-    text-align: center;
-    font-family: 'Alex Brush', cursive;
-    }
-
 #finishedOrderlist {
         border-bottom: 1px solid black;
-     }
+}
 
 .orderItem {
     font-size: 15px;
@@ -142,10 +131,35 @@ footer {
     border-top: 2px solid black;
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(94, 148, 220);
+    color: white;
+    text-align: center;
+    font-family: 'Alex Brush', cursive;
+}
+
+#footerSpace {
+    height: 50px;
+}
+
 @media (max-width: 800px) {
     h1 { 
         display: none;
     }
 }
 
+@media (max-width: 420px) {
+    .menuHead h2 {
+        font-size: 24px;
+    }
+}
 
+@media (max-width: 420px) {
+    .menuHead {
+        height: 150px;
+    }
+}

@@ -13,7 +13,7 @@ if (storageArray) {
 } else {
     $('#orderConfirmation').empty();
 
-    const msgEl = $('<p>').text('No order!');
+    const msgEl = $('<p>').text('No order / Session expired');
     const backLink = $('<a>').attr('href', '../../index.html').text('Back to Menu').addClass('has-text-weight-semibold');
 
     $('#orderConfirmation').append(msgEl, backLink);

@@ -18,15 +18,15 @@ function grabDrinkArray(drink) {
         })
         .then(function (data) {
             if (data) {
-                let results = randomSixArray(data.drinks);
+                const results = randomSixArray(data.drinks);
                 for (let i = 0; i < 6; i++) {
-                    let cardContainer = $("<div>");
+                    const cardContainer = $("<div>");
                     cardContainer.addClass("card");
                     cardContainer.attr("data-name", results[i].strDrink);
-                    let imageContainer = $("<div>");
+                    const imageContainer = $("<div>");
                     imageContainer.addClass("card-image").html(`<img src="${results[i].strDrinkThumb}" alt="${results[i].strDrink}" class="responsive">`)
 
-                    let contentContainer = $("<div>");
+                    const contentContainer = $("<div>");
                     contentContainer.addClass("card-content").html(`<p class="title is-size-4">${results[i].strDrink}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
@@ -41,7 +41,7 @@ function grabDrinkArray(drink) {
         })
         .catch(function (error) {
             console.log(error.message);
-            window.location.href = `../html/error.html`;
+            window.location.href = './assets/html/error.html';
         })
 }
 
@@ -57,13 +57,13 @@ function grabFoodArray(meal) {
                 let results = randomSixArray(data.meals);
                 for (let i = 0; i < 6; i++) {
 
-                    let cardContainer = $("<div>");
+                    const cardContainer = $("<div>");
                     cardContainer.addClass("card");
                     cardContainer.attr("data-name", results[i].strMeal);
-                    let imageContainer = $("<div>");
+                    const imageContainer = $("<div>");
                     imageContainer.addClass("card-image").html(`<img src="${results[i].strMealThumb}" alt="${results[i].strMeal}" class="responsive">`)
 
-                    let contentContainer = $("<div>");
+                    const contentContainer = $("<div>");
                     contentContainer.addClass("card-content").html(`<p class="title is-size-4">${results[i].strMeal}</p>`);
                     cardContainer.append(imageContainer).append(contentContainer);
 
@@ -79,7 +79,7 @@ function grabFoodArray(meal) {
         })
         .catch(function (error) {
             console.log(error.message);
-            window.location.href = `../html/error.html`;
+            window.location.href = './assets/html/error.html';
         });
 }
 
@@ -152,9 +152,8 @@ function persistStorage() {
 
 // Event listeners
 
-// // Event lis on card to add to menu cart
+// Event listener on card to add to menu cart
 $("main").on("click", ".addButton", function(event){
-    //Enable buttons
     document.getElementById('clearBtn').disabled = false;
     document.getElementById('orderBtn').disabled = false;
 
@@ -163,7 +162,7 @@ $("main").on("click", ".addButton", function(event){
     const itemName = card.children[1].children[0].innerText;
     const price = card.children[1].children[1].innerText;
 
-    const priceArray = price.split(" ")
+    const priceArray = price.split(" ");
     const priceOnly = priceArray[1];
 
     //Build object for storage; run the function on it
@@ -204,7 +203,6 @@ $("#orderContainer").on("click", "#clearBtn", function(event) {
 });
 
 // Event listener on 'remove one item from order' button
-    // !! This one need more work -- going into local storage and removing just this one item from it
 $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     const removeBtn = event.target;
     const listItem = removeBtn.parentElement;
@@ -254,8 +252,6 @@ $("#foodSelect").on("change", function(event) {
     
     grabFoodArray(clickedOp.value);
 })
-
-
 
 // Code for the modal
 document.addEventListener('DOMContentLoaded', () => {

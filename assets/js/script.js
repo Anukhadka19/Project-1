@@ -235,11 +235,14 @@ $("#orderContainer").on("click", ".remove-item-btn", function(event) {
     listItem.remove();
 });
 
+const menuMsg = document.querySelectorAll(".menu-msg");
+
 // Event listener for selecting drink menu
 $("#drinkSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#drinkMenu").empty();
-    
+    menuMsg[0].hidden = true;
+
     grabDrinkArray(clickedOp.value);
 });
 
@@ -247,13 +250,64 @@ $("#drinkSelect").on("click", function(event) {
 $("#foodSelect").on("click", function(event) {
     const clickedOp = event.target;
     $("#foodMenu").empty();
-
+    menuMsg[1].hidden = true;
+    
     grabFoodArray(clickedOp.value);
+})
+
+
+
+// Code for the modal
+document.addEventListener('DOMContentLoaded', () => {
+    // Functions to open and close a modal
+    function openModal($el) {
+      $el.classList.add('is-active');
+    }
+  
+    function closeModal($el) {
+      $el.classList.remove('is-active');
+    }
+  
+    function closeAllModals() {
+      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+        closeModal($modal);
+      });
+    }
+  
+    // Add a click event on buttons to open a specific modal
+    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+      const modal = $trigger.dataset.target;
+      const $target = document.getElementById(modal);
+  
+      $trigger.addEventListener('click', () => {
+        openModal($target);
+      });
+    });
+  
+    // Add a click event on various child elements to close the parent modal
+    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+      const $target = $close.closest('.modal');
+  
+      $close.addEventListener('click', () => {
+        closeModal($target);
+      });
+    });
+  
+    // Add a keyboard event to close all modals
+    document.addEventListener('keydown', (event) => {
+      const e = event || window.event;
+  
+      if (e.keyCode === 27) { // Escape key
+        closeAllModals();
+      }
+    });
 });
 
 
 // Call function which loads the user's order, if there are still items in there
 persistStorage();
+
+
 
 
 }) (jQuery);

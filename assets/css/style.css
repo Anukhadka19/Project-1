@@ -4,7 +4,7 @@ body {
     min-height: 100vh;
 }
 
-.menuHead {
+.menu-head {
     background-color: rgb(248, 210, 249);
     height: 90px;
 }
@@ -20,7 +20,7 @@ h3 {
     color: antiquewhite;
 }
 
-.subMenu {
+.sub-menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -50,7 +50,7 @@ header {
     /* font-size: 36px; */
 }
 
-.orderName {
+.order-name {
     font-family: 'Alex Brush', cursive;
     font-size: larger;
 }
@@ -98,13 +98,13 @@ header {
     height: auto;
 }
 
-.addButton {
+.add-button {
     border: 1px solid rgb(8, 97, 145);
     background-color: rgb(110, 209, 231);
     width: 100%;
 }
 
-.addButton:hover {
+.add-button:hover {
     background-color: rgb(7, 76, 179);
     font-weight: 600;
     cursor: pointer;
@@ -132,7 +132,7 @@ footer {
         border-bottom: 1px solid black;
      }
 
-.orderItem {
+.order-item {
     font-size: 15px;
     font-weight: bold;
 

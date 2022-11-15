@@ -9,6 +9,14 @@ body {
     height: 90px;
 }
 
+header {
+    height: 80px;
+    text-align: center;
+    font-size: 60px;
+    color: rgb(42, 109, 233);
+    font-family: 'Courgette', cursive;
+}
+
 h3 {
     font-family: 'Alex Brush', cursive;
 }
@@ -35,14 +43,6 @@ h3 {
     font-size: 3em;
     font-weight: bold;
     font-family: 'Alex Brush', cursive;
-}
-
-header {
-    height: 80px;
-    text-align: center;
-    font-size: 60px;
-    color: rgb(42, 109, 233);
-    font-family: 'Courgette', cursive;
 }
 
 #menuContainer > div {
@@ -117,6 +117,19 @@ header {
     border-radius: 5px;
 }
 
+#finishedOrderlist {
+        border-bottom: 1px solid black;
+}
+
+.order-item {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.sum {
+    border-top: 2px solid black;
+}
+
 footer {
     position: fixed;
     left: 0;
@@ -126,20 +139,10 @@ footer {
     color: white;
     text-align: center;
     font-family: 'Alex Brush', cursive;
-    }
-
-#finishedOrderlist {
-        border-bottom: 1px solid black;
-     }
-
-.order-item {
-    font-size: 15px;
-    font-weight: bold;
-
 }
 
-.sum {
-    border-top: 2px solid black;
+#footerSpace {
+    height: 50px;
 }
 
 @media (max-width: 800px) {
@@ -148,4 +151,14 @@ footer {
     }
 }
 
+@media (max-width: 420px) {
+    .menuHead h2 {
+        font-size: 24px;
+    }
+}
 
+@media (max-width: 420px) {
+    .menuHead {
+        height: 150px;
+    }
+}

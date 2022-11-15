@@ -4,7 +4,6 @@
 
 const drinkContainer = $("#drinkMenu");
 const foodContainer = $("#foodMenu");
-// const orderContainer = $("#order");
 
 
 // Functions
@@ -32,7 +31,7 @@ function grabDrinkArray(drink) {
 
                     const priceEl = $("<p>");
                     priceEl.addClass("subtitle is-size-6").text(createRandomPrice(8, 20));
-                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 addButton');
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 add-button');
                     contentContainer.append(priceEl,addBtnEl);
 
                     drinkContainer.append(cardContainer);
@@ -68,7 +67,7 @@ function grabFoodArray(meal) {
 
                     const priceEl = $("<p>");
                     priceEl.addClass("subtitle is-size-6").text(createRandomPrice(10, 30));
-                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 addButton');
+                    const addBtnEl = $('<button>').text('Add').addClass('subtitle is-size-6 has-text-white p-1 add-button');
                     contentContainer.append(priceEl,addBtnEl);
 
                     foodContainer.append(cardContainer);
@@ -131,10 +130,10 @@ function persistStorage() {
     const storageArray = JSON.parse(localStorage.getItem("orderList"));
     if (storageArray) {
         for (let arrayObj of storageArray) {
-            const item = $('<li>').addClass("orderItem m-1");
-            const orderName = $('<p>').text(arrayObj.name).addClass("orderName");
-            const orderPrice = $('<p>').text(`$${arrayObj.price}`).addClass("orderPrice");
-            const amount = $('<span>').text(`x${arrayObj.units}`).addClass("spanAmount");
+            const item = $('<li>').addClass("order-item m-1");
+            const orderName = $('<p>').text(arrayObj.name).addClass("order-name");
+            const orderPrice = $('<p>').text(`$${arrayObj.price}`).addClass("order-price");
+            const amount = $('<span>').text(`x${arrayObj.units}`).addClass("span-amount");
             const button = $('<button>').text("Remove").addClass("remove-item-btn");
         
             orderPrice.append(amount);
@@ -151,7 +150,7 @@ function persistStorage() {
 // Event listeners
 
 // Event listener on card to add to menu cart
-$("main").on("click", ".addButton", function(event){
+$("main").on("click", ".add-button", function(event){
     document.getElementById('clearBtn').disabled = false;
     document.getElementById('orderBtn').disabled = false;
 
@@ -169,7 +168,7 @@ $("main").on("click", ".addButton", function(event){
 
     if (!storageResult[0]) {
         //Select all existing list items
-        const allLis = $('.orderItem');
+        const allLis = $('.order-item');
         // Match name and update that list item (amount and price)
         for (let listItem of allLis) {
             if (listItem.children[0].innerText === itemName) {
@@ -179,10 +178,10 @@ $("main").on("click", ".addButton", function(event){
         }
     } else {
         // Build new list item
-        const item = $('<li>').addClass("orderItem m-1");
-        const orderName = $('<p>').text(itemName).addClass("orderName");
-        const orderPrice = $('<p>').text(priceOnly).addClass("orderPrice");
-        const amount = $('<span>').text("x1").addClass("spanAmount");
+        const item = $('<li>').addClass("order-item m-1");
+        const orderName = $('<p>').text(itemName).addClass("order-name");
+        const orderPrice = $('<p>').text(priceOnly).addClass("order-price");
+        const amount = $('<span>').text("x1").addClass("span-amount");
         const button = $('<button>').text("Remove").addClass("remove-item-btn");
     
         orderPrice.append(amount);

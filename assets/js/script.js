@@ -40,7 +40,6 @@ function grabDrinkArray(drink) {
             }
         })
         .catch(function (error) {
-            console.log(error.message);
             window.location.href = './assets/html/error.html';
         })
 }
@@ -78,7 +77,6 @@ function grabFoodArray(meal) {
             }
         })
         .catch(function (error) {
-            console.log(error.message);
             window.location.href = './assets/html/error.html';
         });
 }
